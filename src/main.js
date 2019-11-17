@@ -9,6 +9,12 @@ import 'styles/reset.css'
 // border.css是为了解决高分辨率下的1px边框问题
 import 'styles/border.css'
 import 'styles/iconfont.css'
+// 轮播图插件
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+// 所依赖的样式
+import 'swiper/dist/css/swiper.css'
+// 使用轮播图插件
+Vue.use(VueAwesomeSwiper, /* { default global options } */)
 
 Vue.config.productionTip = false
 fastClick.attach(document.body)
