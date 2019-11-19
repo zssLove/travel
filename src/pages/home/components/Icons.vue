@@ -85,9 +85,11 @@
 <style scoped lang="stylus">
     @import '~styles/varibles.styl'
     @import '~styles/mixins.styl'
+    .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets
+        top: 3.8rem
     .icons >>> .swiper-container
         height: 0
-        padding-bottom: 50%
+        padding-bottom: 54%
     .icon
         overflow: hidden
         position: relative
