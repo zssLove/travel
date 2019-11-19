@@ -2,7 +2,7 @@
     <div>
         <div class="title">猜你喜欢</div>
         <ul>
-            <li class="item border-bottom" v-for="item of recommendList" :key="item.id">
+            <li class="item border-bottom" v-for="item of commend" :key="item.id">
                 <div class="item-img-wrapper">
                     <img class="item-img" :src="item.imgUrl" alt="">
                 </div>
@@ -19,30 +19,8 @@
 <script>
 	export default {
 		name: 'HomeRecommend',
-        data () {
-			return {
-				recommendList: [{
-					id: '01',
-                    imgUrl: 'http://img1.qunarzz.com/sight/p0/201402/12/8b2a8c922a1d0d323e8da3e4191e5395.jpg_200x200_12b2e021.jpg',
-                    title: '阜阳生态园',
-                    desc: '真不好看，真垃圾'
-                }, {
-					id: '02',
-					imgUrl: 'http://img1.qunarzz.com/sight/p0/201402/12/8b2a8c922a1d0d323e8da3e4191e5395.jpg_200x200_12b2e021.jpg',
-					title: '阜阳生态园',
-					desc: '真不好看，真垃圾'
-				}, {
-					id: '03',
-					imgUrl: 'http://img1.qunarzz.com/sight/p0/201402/12/8b2a8c922a1d0d323e8da3e4191e5395.jpg_200x200_12b2e021.jpg',
-					title: '阜阳生态园',
-					desc: '真不好看，真垃圾'
-				}, {
-					id: '04',
-					imgUrl: 'http://img1.qunarzz.com/sight/p0/201402/12/8b2a8c922a1d0d323e8da3e4191e5395.jpg_200x200_12b2e021.jpg',
-					title: '阜阳生态园',
-					desc: '真不好看，真垃圾'
-				}]
-            }
+        props: {
+			commend: Array
         }
 	}
 </script>
