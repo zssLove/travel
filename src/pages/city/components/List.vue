@@ -12,69 +12,17 @@
            <div class="area">
                <div class="title">当前城市</div>
                <div class="button-list">
-                   <div class="button-wrapper">
-                       <div class="button">北京</div>
-                   </div>
-                   <div class="button-wrapper">
-                       <div class="button">北京</div>
-                   </div>
-                   <div class="button-wrapper">
-                       <div class="button">北京</div>
-                   </div>
-                   <div class="button-wrapper">
-                       <div class="button">北京</div>
+                   <div class="button-wrapper" v-for="(item ,id) of hotcities" :key="item.id">
+                       <div class="button">{{item.name}}</div>
                    </div>
                </div>
            </div>
-           <div class="area">
-               <div class="title">A</div>
+           <div class="area" v-for="(item, key) of cities" :key="key">
+               <div class="title">{{key}}</div>
                <div class="item-list">
-                   <div class="item border-bottom">
-                       阿坝藏族羌族自治州
-                   </div>
-                   <div class="item border-bottom">
-                       阿坝藏族羌族自治州
-                   </div>
-                   <div class="item border-bottom">
-                       阿坝藏族羌族自治州
-                   </div>
-               </div>
-           </div>
-           <div class="area">
-               <div class="title">A</div>
-               <div class="item-list">
-                   <div class="item border-bottom">
-                       阿坝藏族羌族自治州
-                   </div>
-                   <div class="item border-bottom">
-                       阿坝藏族羌族自治州
-                   </div>
-                   <div class="item border-bottom">
-                       阿坝藏族羌族自治州
-                   </div>
-               </div>
-           </div>
-           <div class="area">
-               <div class="title">A</div>
-               <div class="item-list">
-                   <div class="item border-bottom">
-                       阿坝藏族羌族自治州
-                   </div>
-                   <div class="item border-bottom">
-                       阿坝藏族羌族自治州
-                   </div>
-                   <div class="item border-bottom">
-                       阿坝藏族羌族自治州
-                   </div>
-                   <div class="item border-bottom">
-                       阿坝藏族羌族自治州
-                   </div>
-                   <div class="item border-bottom">
-                       阿坝藏族羌族自治州
-                   </div>
-                   <div class="item border-bottom">
-                       阿坝藏族羌族自治州
-                   </div>
+                    <div class="item" v-for="innerItem of item" :key="innerItem.id">
+                        {{innerItem.name}}
+                    </div>
                </div>
            </div>
        </div>
@@ -86,6 +34,10 @@
 
 	export default {
 		name: 'CityList',
+        props: {
+			hotcities: Array,
+            cities: Object
+        },
         mounted() {
 			this.scroll = new BScroll(this.$refs.wrapper)
 		}
