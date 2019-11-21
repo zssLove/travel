@@ -2,8 +2,13 @@
     <div>
         <city-header></city-header>
         <city-search></city-search>
-        <city-list :cities="cities" :hotcities="hotCities"></city-list>
-        <city-alphabet :cities="cities"></city-alphabet>
+        <city-list :cities="cities"
+                   :hotcities="hotCities"
+                   :letter="letter"
+        ></city-list>
+        <city-alphabet :cities="cities"
+                       @change="handleLetterChange"
+        ></city-alphabet>
     </div>
 </template>
 
@@ -25,7 +30,8 @@
 		    return {
 				//cities要有下面this.cities一致
 				hotCities: [],
-				cities: {}
+				cities: {},
+                letter: ''
 			}
         },
         methods: {
@@ -40,6 +46,9 @@
                     this.cities = data.cities
                     this.hotCities = data.hotCities
                 }
+            },
+            handleLetterChange(letter) {
+                this.letter = letter
             }
         },
         mounted() {
