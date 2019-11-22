@@ -5,14 +5,18 @@
                <div class="title">当前城市</div>
                <div class="button-list">
                    <div class="button-wrapper">
-                       <div class="button">北京</div>
+                       <div class="button">{{this.currentCity}}</div>
                    </div>
                </div>
            </div>
            <div class="area">
                <div class="title">当前城市</div>
                <div class="button-list">
-                   <div class="button-wrapper" v-for="(item ,id) of hotcities" :key="item.id">
+                   <div class="button-wrapper"
+                        v-for="(item ,id) of hotcities"
+                        :key="item.id"
+                        @click="handleCityClick(item.name)"
+                   >
                        <div class="button">{{item.name}}</div>
                    </div>
                </div>
@@ -24,7 +28,11 @@
            >
                <div class="title">{{key}}</div>
                <div class="item-list">
-                    <div class="item" v-for="innerItem of item" :key="innerItem.id">
+                    <div class="item"
+                         v-for="innerItem of item"
+                         :key="innerItem.id"
+                         @click="handleCityClick(innerItem.name)"
+                    >
                         {{innerItem.name}}
                     </div>
                </div>
@@ -35,17 +43,28 @@
 
 <script>
 	import BScroll from 'better-scroll'
-
+    import { mapState, mapMutations } from 'vuex'
 	export default {
 		name: 'CityList',
+        computed: {
+			...mapState({
+				currentCity: 'city'
+            })
+        },
         props: {
 			hotcities: Array,
             cities: Object,
             letter: String
         },
-        mounted() {
-			this.scroll = new BScroll(this.$refs.wrapper)
-		},
+        methods: {
+			handleCityClick(city) {
+				// this.$store.commit('changeCity', city)
+                this.changeCity(city)
+                this.$router.push('/')
+			},
+            //将方法映射到changeCity中，上面的this.$store.commit('changeCity', city)= this.changeCity(city)
+            ...mapMutations(['changeCity'])
+        },
         watch: {
 			letter() {
 				if(this.letter) {
@@ -54,7 +73,10 @@
 					this.scroll.scrollToElement(element)
                 }
             }
-        }
+        },
+		mounted() {
+			this.scroll = new BScroll(this.$refs.wrapper)
+		}
 	}
 </script>
 
